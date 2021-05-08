@@ -1,4 +1,4 @@
-const {query} = require('../../db/mysql/wanxiang.js')
+const {query} = require('../../db/mysql/db_main.js')
 
 class Sql{
     constructor(){}

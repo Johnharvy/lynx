@@ -1,16 +1,25 @@
+
+/**
+ *   从配置里拿环境和参数
+ *  */  
+
 const  mysql=require("mysql");
+
+const {db : {db_main}, _env} = require('../../config.js')
+
+
+const {host,port,database, multipleStatement,user, password,charset} =  db_main[_env]
 
 //换成连接池，避免单个连接之间冲突
 const mqlConnect=mysql.createPool({
-    host:"127.0.0.1",
-    port:3306,
-    database:"wanxiang",
-    multipleStatement:true, //允许同时执行多条sql语句
-    user:"root",
-    password:"root",
-    charset:"utf8_unicode_ci"
+    host,
+    port,
+    database,
+    multipleStatement,
+    user,
+    password,
+    charset
 });
-
 
 const  query = function(sql,options,callback){ 
     return new Promise( (resolve, reject) => {
